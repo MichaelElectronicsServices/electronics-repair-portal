@@ -1,0 +1,16 @@
+{% extends 'repairs/base.html' %}
+{% block content %}
+<h2>All Repair Tickets</h2>
+<ul>
+    {% for ticket in tickets %}
+        <li>
+            <a href="{% url 'ticket_detail' ticket.pk %}">
+                Ticket #{{ ticket.ticket_number }} - {{ ticket.customer.first_name }} {{ ticket.customer.last_name }} ({{ ticket.status }})
+            </a>
+        </li>
+    {% empty %}
+        <li>No tickets yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

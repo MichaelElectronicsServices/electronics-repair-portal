@@ -1,0 +1,29 @@
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: repairdb
+      MYSQL_USER: repairuser
+      MYSQL_PASSWORD: repairpass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_NAME: repairdb
+      DB_USER: repairuser
+      DB_PASSWORD: repairpass
+      DB_HOST: db        # ✅ THIS IS THE KEY
+      DB_PORT: 3306
+
+volumes:
+  db_data:

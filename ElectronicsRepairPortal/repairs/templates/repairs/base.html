@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Repair Portal</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+<body>
+    <header>
+        <h1>Electronics Repair Portal</h1>
+        <nav>
+            <a href="{% url 'ticket_create' %}">Submit Ticket</a> |
+            <a href="{% url 'ticket_list' %}">View All Tickets</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
+

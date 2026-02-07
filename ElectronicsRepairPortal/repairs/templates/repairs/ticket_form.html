@@ -1,0 +1,21 @@
+{% extends 'repairs/base.html' %}
+{% block content %}
+<h2>Submit a Repair Ticket</h2>
+<form method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Customer Information</legend>
+        {{ customer_form.as_p }}
+    </fieldset>
+    <fieldset>
+        <legend>Item Information</legend>
+        {{ item_form.as_p }}
+    </fieldset>
+    <fieldset>
+        <legend>Repair Details</legend>
+        {{ ticket_form.as_p }}
+    </fieldset>
+    <button type="submit">Submit Ticket</button>
+</form>
+{% endblock %}
+
